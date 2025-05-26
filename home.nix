@@ -94,12 +94,14 @@
     shellAliases = {
     	nv = "nvim";
     };
-    shellAbbrs = {
-	gcm = {
-	  setCursor = "%";
-	  expansion = "git commit -m \"%\"";
+    shellAbbrs = let
+	expand = cmd: {
+		setCursor = "%";
+		expansion = cmd;
 	};
-	nr = "nix run nixpkgs#";
+    in {
+	gcm = expand "git commit -m \"%\"";
+	nr = expand "nix run nixpkgs#%";
     };
   };
 
@@ -140,6 +142,6 @@ programs.alacritty = {
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/user/.config/nixconfig";
+    flake = "/home/benedikt/.config/nixconfig";
   };
 }
