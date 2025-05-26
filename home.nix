@@ -17,7 +17,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -26,7 +26,8 @@
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+	nerd-fonts.jetbrains-mono
+	fastfetch
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -90,7 +91,50 @@
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
     '';
+    shellAliases = {
+    	nv = "nvim";
+    };
+    shellAbbrs = {
+	gcm = {
+	  setCursor = "%";
+	  expansion = "git commit -m \"%\"";
+	};
+	nr = "nix run nixpkgs#";
+    };
   };
+
+  programs.starship = {
+  enable = true;
+  settings = {
+    add_newline = false;
+    character = {
+      success_symbol = "[](bold white) [➜](bold blue)";
+      error_symbol = "[](bold white) [➜](bold red)";
+    };
+  };
+};
+
+programs.alacritty = {
+	enable = true;
+	settings = {
+		window.padding = { x = 10; y = 10; };
+		font = {
+		  size = 14;
+		  normal = {
+		    family = "JetBrainsMonoNerdFont";
+		    style = "Regular";
+		  };
+		  bold = {
+		    family = "JetBrainsMonoNerdFont";
+		    style = "Bold";
+		  };
+		  italic = {
+		    family = "JetBrainsMonoNerdFont";
+		    style = "Italic";
+		  };
+		};
+	};
+};
 
   programs.nh = {
     enable = true;
