@@ -110,7 +110,15 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-  	home-manager
+    (vpnc.overrideAttrs (_oldAttrs: {
+      version = "unstable-2024-12-20";
+      src = pkgs.fetchFromGitHub {
+        owner = "streambinder";
+        repo = "vpnc";
+        rev = "d58afaaafb6a43cb21bb08282b54480d7b2cc6ab";
+        hash = "sha256-79DaK1s+YmROKbcWIXte+GZh0qq9LAQlSmczooR86H8=";
+      };
+    }))
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
