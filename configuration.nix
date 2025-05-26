@@ -16,7 +16,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.extraModulePackages = with config.boot.kernelPackages; [ yt6801 ];
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "snowflake"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
