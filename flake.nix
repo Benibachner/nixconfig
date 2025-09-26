@@ -18,17 +18,10 @@
     home-manager,
     nvf,
     ...
-  } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-      };
-    };
-  in {
+  }: {
     nixosConfigurations.snowflake = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs system;};
+      #specialArgs = {inherit inputs system;};
+      system = "x86_64-linux";
 
       modules = [
         nvf.nixosModules.default
