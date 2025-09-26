@@ -17,6 +17,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.extraModulePackages = with config.boot.kernelPackages; [yt6801];
+  boot.kernelParams = ["snd-intel-dspcfg.dsp_driver=1"];
 
   networking.hostName = "snowflake"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -66,6 +67,7 @@
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -111,6 +113,7 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
+    comma
     cargo
     rustc
     gcc
