@@ -1,25 +1,27 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ inputs, config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-#      inputs.home-manager.nixosModules.default
-    ];
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    #      inputs.home-manager.nixosModules.default
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.extraModulePackages = with config.boot.kernelPackages; [ yt6801 ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [yt6801];
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "snowflake"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -85,19 +87,18 @@
   users.users.benedikt = {
     isNormalUser = true;
     description = "Benedikt";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-    #  thunderbird
-	neovim
+      #  thunderbird
     ];
   };
 
-#  home-manager = {
-#    extraSpecialArgs = { inherit inputs; };
-#    users = {
-#      "benedikt" = import ./home.nix;
-#    };
-#  };
+  #  home-manager = {
+  #    extraSpecialArgs = { inherit inputs; };
+  #    users = {
+  #      "benedikt" = import ./home.nix;
+  #    };
+  #  };
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -108,8 +109,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    cargo
+    rustc
+    gcc
     (vpnc.overrideAttrs (_oldAttrs: {
       version = "unstable-2024-12-20";
       src = pkgs.fetchFromGitHub {
@@ -149,13 +153,42 @@
   system.stateVersion = "25.05"; # Did you read the comment?
 
   programs.bash = {
-  interactiveShellInit = ''
-    if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-    then
-      shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-      exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-    fi
-  '';
+    interactiveShellInit = ''
+      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+      then
+        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+      fi
+    '';
   };
 
+  programs.nvf = {
+    enable = true;
+    settings = {
+      vim = {
+        theme = {
+          enable = true;
+          name = "gruvbox";
+          style = "dark";
+          transparent = true;
+        };
+
+        telescope.enable = true;
+        autocomplete.nvim-cmp.enable = true;
+        treesitter.context.enable = true;
+
+        languages = {
+          enableFormat = true;
+          enableTreesitter = true;
+
+          nix.enable = true;
+          rust.enable = true;
+        };
+        lsp = {
+          enable = true;
+          formatOnSave = true;
+        };
+      };
+    };
+  };
 }
