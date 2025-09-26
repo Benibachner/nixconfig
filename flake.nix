@@ -27,7 +27,7 @@
       };
     };
   in {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.snowflake = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs system;};
 
       modules = [
