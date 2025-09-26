@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "benedikt";
@@ -93,17 +95,15 @@
     shellAliases = {
       nv = "nvim";
     };
-    shellAbbrs =
-      let
-        expand = cmd: {
-          setCursor = "%";
-          expansion = cmd;
-        };
-      in
-      {
-        gcm = expand "git commit -m \"%\"";
-        nr = expand "nix run nixpkgs#%";
+    shellAbbrs = let
+      expand = cmd: {
+        setCursor = "%";
+        expansion = cmd;
       };
+    in {
+      gcm = expand "git commit -m \"%\"";
+      nr = expand "nix run nixpkgs#%";
+    };
   };
 
   programs.starship = {
@@ -141,13 +141,4 @@
       };
     };
   };
-
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/benedikt/.config/nixconfig";
-  };
 }
-
-
