@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  nvf,
   ...
 }: {
   # Home Manager needs a bit of information about you and the paths it should
@@ -31,6 +32,8 @@
     nerd-fonts.jetbrains-mono
     fastfetch
     bibata-cursors
+
+    wl-clipboard
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -142,4 +145,28 @@
       };
     };
   };
+
+  programs.nvf = {
+    enable = true;
+    settings = {
+      vim = {
+        theme = {
+          enable = true;
+          name = "gruvbox";
+          style = "dark";
+          transparent = true;
+        };
+
+        clipboard = {
+          enable = true;
+          registers = "unnamedplus";
+        };
+
+        telescope.enable = true;
+        autocomplete.nvim-cmp.enable = true;
+        treesitter.context.enable = true;
+      };
+    };
+  };
+
 }

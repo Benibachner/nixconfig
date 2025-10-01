@@ -8,11 +8,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nvf.url = "github:notashelf/nvf";
   };
 
   outputs = {
     nixpkgs,
     home-manager,
+    nvf,
     ...
   }: let
     system = "x86_64-linux";
@@ -26,10 +29,14 @@
       modules = [
         ./home.nix
         ./desktop
+        nvf.homeManagerModules.default
       ];
+
+
 
       # Optionally use extraSpecialArgs
       # to pass through arguments to home.nix
     };
+
   };
 }
