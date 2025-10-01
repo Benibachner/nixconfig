@@ -123,6 +123,9 @@
     rustc
     gcc
     git
+
+    gns3-server
+    gns3-gui
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
