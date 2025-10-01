@@ -3,8 +3,6 @@
   pkgs,
   ...
 }: {
-  programs.kitty.enable = true;
-
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
@@ -20,11 +18,52 @@
         tablet.output = "current";
       };
 
+      exec-once = [
+        # finalize startup
+        # set cursor for HL itself
+        "hyprctl setcursor Bibata-Modern-Classic 24"
+      ];
+
+      general = {
+        gaps_in = 5;
+        gaps_out = 5;
+        border_size = 1;
+        "col.active_border" = "rgba(88888888)";
+        "col.inactive_border" = "rgba(00000088)";
+
+        #allow_tearing = true;
+        resize_on_border = true;
+      };
+
+      decoration = {
+        rounding = 10;
+        rounding_power = 3;
+        blur = {
+          enabled = true;
+          brightness = 1.0;
+          contrast = 1.0;
+          noise = 0.01;
+
+          vibrancy = 0.2;
+          vibrancy_darkness = 0.5;
+
+          passes = 4;
+          size = 7;
+
+          popups = true;
+          popups_ignorealpha = 0.2;
+        };
+      };
+
+      xwayland.force_zero_scaling = true;
+
       "$mod" = "ALT";
       bind =
         [
           "SUPER, F, exec, firefox"
           "SUPER, T, exec, alacritty"
+          "$mod, M, exec, pkill Hyprland"
+          "$mod, F, togglefloating,"
         ]
         ++ (
           # workspaces
