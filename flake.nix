@@ -16,7 +16,6 @@
       system = "x86_64-linux";
 
       modules = [
-        nvf.nixosModules.default
         ./system/configuration.nix
       ];
     };
