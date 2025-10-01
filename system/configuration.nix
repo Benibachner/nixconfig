@@ -1,12 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  inputs,
-  config,
-  pkgs,
-  ...
-}: {
+{ inputs, config, pkgs, ... }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -16,13 +11,13 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.extraModulePackages = with config.boot.kernelPackages; [yt6801];
-  boot.kernelParams = ["snd-intel-dspcfg.dsp_driver=1"];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ yt6801 ];
+  boot.kernelParams = [ "snd-intel-dspcfg.dsp_driver=1" ];
 
   networking.hostName = "snowflake"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -89,10 +84,11 @@
   users.users.benedikt = {
     isNormalUser = true;
     description = "Benedikt";
-    extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs;
+      [
+        #  thunderbird
+      ];
   };
 
   #  home-manager = {
@@ -180,18 +176,6 @@
         telescope.enable = true;
         autocomplete.nvim-cmp.enable = true;
         treesitter.context.enable = true;
-
-        languages = {
-          enableFormat = true;
-          enableTreesitter = true;
-
-          nix.enable = true;
-          rust.enable = true;
-        };
-        lsp = {
-          enable = true;
-          formatOnSave = true;
-        };
       };
     };
   };
