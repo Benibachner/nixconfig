@@ -173,6 +173,11 @@
           transparent = true;
         };
 
+        clipboard = {
+          enable = true;
+          registers = "unnamedplus";
+        };
+
         telescope.enable = true;
         autocomplete.nvim-cmp.enable = true;
         treesitter.context.enable = true;
