@@ -165,8 +165,23 @@
         telescope.enable = true;
         autocomplete.nvim-cmp.enable = true;
         treesitter.context.enable = true;
+
+        languages = {
+          nix = {
+            enable = true;
+            format.enable = true;
+            lsp.enable = true;
+            extraDiagnostics.enable = true;
+          };
+
+          rust = {
+            enable = true;
+            format.enable = true;
+            lsp.enable = true;
+            treesitter.enable = true;
+          };
+        };
       };
     };
   };
-
 }
