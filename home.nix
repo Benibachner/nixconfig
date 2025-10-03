@@ -28,7 +28,6 @@
     nerd-fonts.jetbrains-mono
     fastfetch
     bibata-cursors
-
     wl-clipboard
 
     # # You can also create simple shell scripts directly inside your
