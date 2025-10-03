@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  nvf,
   ...
 }: {
   # Home Manager needs a bit of information about you and the paths it should
@@ -97,7 +96,8 @@
       set fish_greeting # Disable greeting
     '';
     shellAliases = {
-      nv = "nvim";
+      # nv = "nvim";
+      pwr = "powerprofilesctl set";
     };
     shellAbbrs = let
       expand = cmd: {
@@ -141,45 +141,6 @@
         italic = {
           family = "JetBrainsMonoNerdFont";
           style = "Italic";
-        };
-      };
-    };
-  };
-
-  programs.nvf = {
-    enable = true;
-    settings = {
-      vim = {
-        theme = {
-          enable = true;
-          name = "gruvbox";
-          style = "dark";
-          transparent = true;
-        };
-
-        clipboard = {
-          enable = true;
-          registers = "unnamedplus";
-        };
-
-        telescope.enable = true;
-        autocomplete.nvim-cmp.enable = true;
-        treesitter.context.enable = true;
-
-        languages = {
-          nix = {
-            enable = true;
-            format.enable = true;
-            lsp.enable = true;
-            extraDiagnostics.enable = true;
-          };
-
-          rust = {
-            enable = true;
-            format.enable = true;
-            lsp.enable = true;
-            treesitter.enable = true;
-          };
         };
       };
     };

@@ -4,19 +4,34 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
-    nvf.url = "github:notashelf/nvf";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     nixpkgs,
-    nvf,
+    home-manager,
     ...
-  }: {
+  }: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
     nixosConfigurations.snowflake = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
       modules = [
         ./system/configuration.nix
+      ];
+    };
+
+    homeConfigurations."benedikt" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+
+      modules = [
+        ./home.nix
+        ./desktop
       ];
     };
   };
