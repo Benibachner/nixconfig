@@ -1,8 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "benedikt";
@@ -73,9 +70,7 @@
   #
   #  /etc/profiles/per-user/benedikt/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
+  home.sessionVariables = { EDITOR = "nvim"; };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -105,7 +100,7 @@
         expansion = cmd;
       };
     in {
-      gcm = expand "git commit -m \"%\"";
+      gcm = expand ''git commit -m "%"'';
       nr = expand "nix run nixpkgs#%";
     };
   };
@@ -144,5 +139,41 @@
         };
       };
     };
+  };
+
+  programs.helix = {
+    enable = true;
+    package = pkgs.evil-helix;
+
+    settings = {
+      theme = "autumn_night_transparent";
+      editor.cursor-shape = {
+        normal = "block";
+        insert = "bar";
+        select = "underline";
+      };
+    };
+    languages.language = [{
+      name = "nix";
+      auto-format = true;
+    }];
+    themes = {
+      autumn_night_transparent = {
+        "inherits" = "autumn_night";
+        "ui.background" = { };
+      };
+    };
+  };
+
+  programs.nixvim = {
+    enable = true;
+    defaultEditor = true;
+
+    nixpkgs.useGlobalPackages = true;
+
+    viAlias = true;
+    vimAlias = true;
+
+    luaLoader.enable = true;
   };
 }

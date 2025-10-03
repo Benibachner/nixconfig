@@ -8,31 +8,29 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = {
-    nixpkgs,
-    home-manager,
-    ...
-  }: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in {
-    nixosConfigurations.snowflake = nixpkgs.lib.nixosSystem {
+  outputs = { nixpkgs, home-manager, nixvim, ... }:
+    let
       system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      nixosConfigurations.snowflake = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
 
-      modules = [
-        ./system/configuration.nix
-      ];
+        modules = [ ./system/configuration.nix ];
+      };
+
+      homeConfigurations."benedikt" =
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          modules = [ ./home.nix ./desktop nixvim.homeManagerModules.nixvim ];
+        };
     };
-
-    homeConfigurations."benedikt" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-
-      modules = [
-        ./home.nix
-        ./desktop
-      ];
-    };
-  };
 }
