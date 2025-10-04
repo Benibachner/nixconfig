@@ -30,7 +30,7 @@
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
-          modules = [ ./home.nix ./desktop nixvim.homeManagerModules.nixvim ];
+          modules = [ ./home.nix ./desktop ./cli nixvim.homeManagerModules.nixvim ];
         };
     };
 }
