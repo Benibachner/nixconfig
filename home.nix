@@ -88,10 +88,17 @@
     enable = true;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
+
+      fish_vi_key_bindings
+      set -g fish_key_bindings fish_vi_key_bindings
+      set -U fish_cursor_insert block
+      bind -M insert -m default vj cancel repaint-mode
+      set -g fish_sequence_key_delay_ms 200
+
     '';
     shellAliases = {
-      # nv = "nvim";
-      pwr = "powerprofilesctl set";
+      nv = "nvim";
+      pwr = "powerprofilesctl";
     };
     shellAbbrs = let
       expand = cmd: {
@@ -122,6 +129,7 @@
         x = 10;
         y = 10;
       };
+      window.opacity = 0.8;
       font = {
         size = 14;
         normal = {
