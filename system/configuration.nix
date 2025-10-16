@@ -82,7 +82,7 @@
   users.users.benedikt = {
     isNormalUser = true;
     description = "Benedikt";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "ubridge" ];
     packages = with pkgs;
       [
         #  thunderbird
@@ -125,11 +125,22 @@
     gns3-gui
     vpcs
     ubridge
+    inetutils
+    dynamips
 
     neovim
 
     spotify
   ];
+
+  users.groups.ubridge = { };
+  security.wrappers.ubridge = {
+    source = "/run/current-system/sw/bin/ubridge";
+    capabilities = "cap_net_admin,cap_net_raw=ep";
+    owner = "root";
+    group = "ubridge";
+    permissions = "u+rx,g+rx,o+rx";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -167,5 +178,26 @@
       fi
     '';
   };
+  virtualisation = {
+    libvirtd = {
+      allowedBridges = [
+        "nm-bridge"
+        "virbr0"
+      ];
+      enable = true;
+      qemu = {
+        runAsRoot = false;
+        vhostUserPackages = [ pkgs.virtiofsd ];
+        swtpm.enable = true;
+      };
+    };
+    spiceUSBRedirection.enable = true;
+  };
 
+  services = {
+    spice-vdagentd.enable = true;
+    spice-webdavd.enable = true;
+  };
+
+  programs.virt-manager.enable = true;
 }
