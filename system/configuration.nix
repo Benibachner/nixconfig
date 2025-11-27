@@ -109,6 +109,15 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  users.groups.ubridge = { };
+
+  security.wrappers.ubridge = {
+    source = "/run/current-system/sw/bin/ubridge";
+    capabilities = "cap_net_admin,cap_net_raw=ep";
+    owner = "root";
+    group = "ubridge";
+    permissions = "u+rx,g+rx,o+rx";
+  };
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -121,26 +130,17 @@
     gcc
     git
 
-    gns3-server
-    gns3-gui
-    vpcs
-    ubridge
-    inetutils
-    dynamips
-
     neovim
-
     spotify
+
+    gns3-gui
+    gns3-server
+    dynamips
+    inetutils
+    ubridge
+    vpcs
   ];
 
-  users.groups.ubridge = { };
-  security.wrappers.ubridge = {
-    source = "/run/current-system/sw/bin/ubridge";
-    capabilities = "cap_net_admin,cap_net_raw=ep";
-    owner = "root";
-    group = "ubridge";
-    permissions = "u+rx,g+rx,o+rx";
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

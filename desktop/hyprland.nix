@@ -12,16 +12,23 @@
       input = {
         kb_layout = "at";
 
+	natural_scroll = true;
+
         # focus change on cursor move
         follow_mouse = 1;
         accel_profile = "flat";
         tablet.output = "current";
       };
 
+      monitor = [
+	",preferred,auto,1.25"
+      ];
+
       exec-once = [
         # finalize startup
         # set cursor for HL itself
-        "hyprctl setcursor Bibata-Modern-Classic 24"
+        # "hyprctl setcursor Bibata-Modern-Classic 24"
+	"waybar"
       ];
 
       general = {
@@ -64,6 +71,7 @@
           "SUPER, T, exec, alacritty"
           "$mod, M, exec, pkill Hyprland"
           "$mod, F, togglefloating,"
+	  "$mod, R, exec, rofi"
         ]
         ++ (
           # workspaces
