@@ -13,9 +13,12 @@
       url = "github:nix-community/nixvim/nixos-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, nixvim, ... }:
+  outputs = { nixpkgs, home-manager, nixvim, disko, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -23,7 +26,12 @@
       nixosConfigurations.snowflake = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        modules = [ ./system/configuration.nix ];
+        modules = [ 
+          ./system/configuration.nix
+
+          disko.nixosModules.disko
+          ./system/disko.nix
+        ];
       };
 
       homeConfigurations."benedikt" =
