@@ -44,7 +44,7 @@
     # x11.enable = true;
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
-    size = 16;
+    size = 24;
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
