@@ -16,9 +16,13 @@
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+    stylix = {
+      url = "github:nix-community/stylix/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, nixvim, disko, ... }:
+  outputs = { nixpkgs, home-manager, nixvim, disko, stylix, ... } @inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -36,6 +40,7 @@
 
       homeConfigurations."benedikt" =
         home-manager.lib.homeManagerConfiguration {
+	  extraSpecialArgs = { inherit inputs; };
           inherit pkgs;
 
           modules = [ ./home.nix ./desktop ./cli nixvim.homeManagerModules.nixvim ];

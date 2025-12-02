@@ -78,7 +78,9 @@
   #
   #  /etc/profiles/per-user/benedikt/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = { EDITOR = "nvim"; };
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -137,46 +139,6 @@
       window.padding = {
         x = 10;
         y = 10;
-      };
-      window.opacity = 0.8;
-      font = {
-        size = 14;
-        normal = {
-          family = "JetBrainsMonoNerdFont";
-          style = "Regular";
-        };
-        bold = {
-          family = "JetBrainsMonoNerdFont";
-          style = "Bold";
-        };
-        italic = {
-          family = "JetBrainsMonoNerdFont";
-          style = "Italic";
-        };
-      };
-    };
-  };
-
-  programs.helix = {
-    enable = true;
-    package = pkgs.evil-helix;
-
-    settings = {
-      theme = "autumn_night_transparent";
-      editor.cursor-shape = {
-        normal = "block";
-        insert = "bar";
-        select = "underline";
-      };
-    };
-    languages.language = [{
-      name = "nix";
-      auto-format = true;
-    }];
-    themes = {
-      autumn_night_transparent = {
-        "inherits" = "autumn_night";
-        "ui.background" = { };
       };
     };
   };
