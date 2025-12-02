@@ -6,7 +6,7 @@
   imports = [
     ./hyprland.nix
     ./waybar.nix
-    ./rofi.nix
+    ./fuzzel.nix
     ./stylix.nix
   ];
 }

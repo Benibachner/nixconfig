@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  programs.rofi = {
+  programs.fuzzel = {
     enable = true;
   };
 }

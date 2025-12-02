@@ -70,7 +70,7 @@
           "SUPER, E, exec, nautilus"
           "$mod, M, exec, pkill Hyprland"
           "$mod, F, togglefloating,"
-	  "$mod, R, exec, rofi -show drun"
+	  "$mod, R, exec, fuzzel"
         ]
         ++ (
           # workspaces
