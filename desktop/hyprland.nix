@@ -12,7 +12,9 @@
       input = {
         kb_layout = "at";
 
-	natural_scroll = true;
+	touchpad = {
+	  natural_scroll = true;
+	};
 
         # focus change on cursor move
         follow_mouse = 1;

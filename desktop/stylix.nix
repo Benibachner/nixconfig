@@ -13,6 +13,8 @@
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
 
+    opacity.terminal = 0.4;
+
     fonts = {
       sizes = {
 	terminal = 14;

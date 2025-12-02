@@ -16,6 +16,14 @@
       }
     ];
 
+    extraConfigLua = ''
+      -- transparent background
+      vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+      vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
+      vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'none' })
+    '';
+
     plugins = {
 	lualine.enable = true;
 	luasnip.enable = true;
@@ -23,6 +31,7 @@
 	treesitter = {
 	  enable = true;
 	};
+	autoclose.enable = true;
 
 	tiny-inline-diagnostic.enable = true;
 
@@ -130,7 +139,8 @@
 	  };
 
 	  servers = {
-	    nixd.enable = true;
+	    # nixd.enable = true;
+	    nil_ls.enable = true;
 	    rust_analyzer = {
 	      enable = true;
 	      installCargo = true;
