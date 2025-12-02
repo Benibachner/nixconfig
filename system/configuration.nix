@@ -98,8 +98,6 @@
 
   programs.direnv.enable = true;
 
-  # Install firefox.
-  programs.firefox.enable = true;
 
   programs.nh = {
     enable = true;

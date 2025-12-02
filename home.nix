@@ -85,6 +85,14 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # Install firefox.
+  programs.firefox = {
+    enable = true;
+    profiles = {
+      default = {};
+    };
+  };
+
   programs.git = {
     enable = true;
     userName = "benedikt";

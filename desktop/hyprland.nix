@@ -68,11 +68,15 @@
       bind =
         [
           "SUPER, F, exec, firefox"
+	  "SUPER, ENTER, exec, firefox"
           "SUPER, T, exec, alacritty"
           "SUPER, E, exec, nautilus"
           "$mod, M, exec, pkill Hyprland"
           "$mod, F, togglefloating,"
 	  "$mod, R, exec, fuzzel"
+	  "$mod, Q, killactive"
+	  "$mod, mouse:272, movewindow"
+	  "$mod, mouse:273, resizewindow"
         ]
         ++ (
           # workspaces

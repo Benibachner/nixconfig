@@ -15,7 +15,7 @@
 
     opacity.terminal = 0.7;
 
-    #firefox.profileNames = ["default"];
+    targets.firefox.profileNames = ["default"];
 
     image = ./wallpapers/marveling.jpg;
 
