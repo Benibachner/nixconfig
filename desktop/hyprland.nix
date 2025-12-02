@@ -24,6 +24,8 @@
 
       monitor = [
 	",preferred,auto,1.25"
+	"DP-7,preferred,1080x400,1"
+	"DP-8,preferred,0x0,1,transform,3"
       ];
 
       exec-once = [
@@ -68,7 +70,7 @@
       bind =
         [
           "SUPER, F, exec, firefox"
-	  "SUPER, ENTER, exec, firefox"
+	  "SUPER, RETURN, exec, alacritty"
           "SUPER, T, exec, alacritty"
           "SUPER, E, exec, nautilus"
           "$mod, M, exec, pkill Hyprland"
