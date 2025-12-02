@@ -13,9 +13,11 @@
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/atlas.yaml";
 
-    opacity.terminal = 0.4;
+    opacity.terminal = 0.7;
 
-    firefox.profileNames = ["default"];
+    #firefox.profileNames = ["default"];
+
+    image = ./wallpapers/marveling.jpg;
 
     fonts = {
       sizes = {
