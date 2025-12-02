@@ -43,7 +43,7 @@
 	  extraSpecialArgs = { inherit inputs; };
           inherit pkgs;
 
-          modules = [ ./home.nix ./desktop ./cli nixvim.homeManagerModules.nixvim ];
+          modules = [ ./home.nix ./desktop ./terminal nixvim.homeManagerModules.nixvim ];
         };
     };
 }
