@@ -92,6 +92,8 @@
     aliases = {
       s = "status --short";
       l = "log --oneline --graph";
+      ps = "push";
+      pl = "pull";
     };
   };
 
