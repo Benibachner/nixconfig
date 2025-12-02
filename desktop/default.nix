@@ -7,5 +7,6 @@
     ./hyprland.nix
     ./waybar.nix
     ./rofi.nix
+    ./gtk.nix
   ];
 }
