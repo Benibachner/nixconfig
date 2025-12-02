@@ -75,8 +75,7 @@
           "$mod, F, togglefloating,"
 	  "$mod, R, exec, fuzzel"
 	  "$mod, Q, killactive"
-	  "$mod, mouse:272, movewindow"
-	  "$mod, mouse:273, resizewindow"
+	  # "$mod, mouse:273, resizewindow"
         ]
         ++ (
           # workspaces
@@ -91,6 +90,10 @@
             )
             9)
         );
+      bindm = [
+	"$mod, mouse:272, movewindow"
+	"$mod, mouse:273, resizewindow"
+      ];
     };
   };
 }
