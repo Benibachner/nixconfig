@@ -96,6 +96,8 @@
   #    };
   #  };
 
+  programs.direnv.enable = true;
+
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -129,6 +131,8 @@
     rustc
     gcc
     git
+    just
+    uv
 
     neovim
     spotify
