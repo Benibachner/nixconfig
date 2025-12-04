@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: {
+  programs.hyprlock.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
@@ -73,6 +74,7 @@
 	  "SUPER, RETURN, exec, alacritty"
           "SUPER, T, exec, alacritty"
           "SUPER, E, exec, nautilus"
+	  "SUPER, l, exec, hyprlock"
           "$mod, M, exec, pkill Hyprland"
           "$mod, F, togglefloating,"
 	  "$mod, R, exec, fuzzel"
