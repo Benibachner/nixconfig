@@ -28,7 +28,7 @@
   time.timeZone = "Europe/Vienna";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "de_AT.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_AT.UTF-8";
@@ -46,7 +46,7 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = false;
+  services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.displayManager.defaultSession = "hyprland";
 
