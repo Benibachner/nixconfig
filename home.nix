@@ -97,13 +97,15 @@
 
   programs.git = {
     enable = true;
-    userName = "benedikt";
-    userEmail = "benedikt.theuretzbachner@gmail.com";
-    aliases = {
-      s = "status --short";
-      l = "log --oneline --graph";
-      ps = "push";
-      pl = "pull";
+    settings = {
+      user.name = "benedikt";
+      user.email = "benedikt.theuretzbachner@gmail.com";
+      alias = {
+	s = "status --short";
+	l = "log --oneline --graph";
+	ps = "push";
+	pl = "pull";
+      };
     };
   };
 
