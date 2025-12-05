@@ -29,7 +29,6 @@
     fastfetch
     bibata-cursors
     wl-clipboard
-    anki-bin
 
     brightnessctl
 

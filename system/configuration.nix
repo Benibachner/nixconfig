@@ -137,8 +137,10 @@
     just
     uv
     cockpit
-
     neovim
+    vpnc
+    ripgrep
+
     spotify
 
     gns3-gui

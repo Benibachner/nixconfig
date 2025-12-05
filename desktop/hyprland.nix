@@ -27,6 +27,8 @@
 	",preferred,auto,1.25"
 	"DP-7,preferred,1080x400,1"
 	"DP-8,preferred,0x0,1,transform,3"
+	"DP-11,preferred,1080x400,1"
+	"DP-12,preferred,0x0,1,transform,3"
       ];
 
       exec-once = [
