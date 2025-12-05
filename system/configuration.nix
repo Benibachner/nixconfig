@@ -46,8 +46,8 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
   services.displayManager.defaultSession = "hyprland";
 
   # Configure keymap in X11
@@ -75,6 +75,8 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+
+  services.cockpit.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -134,6 +136,7 @@
     git
     just
     uv
+    cockpit
 
     neovim
     spotify
@@ -172,7 +175,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 
   programs.bash = {
     interactiveShellInit = ''
@@ -183,21 +186,15 @@
       fi
     '';
   };
-  virtualisation = {
-    libvirtd = {
-      allowedBridges = [
-        "nm-bridge"
-        "virbr0"
-      ];
-      enable = true;
-      qemu = {
-        runAsRoot = false;
-        vhostUserPackages = [ pkgs.virtiofsd ];
-        swtpm.enable = true;
-      };
+
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
     };
-    spiceUSBRedirection.enable = true;
-  };
+};
 
   services = {
     spice-vdagentd.enable = true;
