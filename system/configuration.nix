@@ -140,6 +140,7 @@
     neovim
     vpnc
     ripgrep
+    jdk
 
     spotify
 
