@@ -27,6 +27,8 @@
 	",preferred,auto,1.25"
 	"DP-7,preferred,1080x400,1"
 	"DP-8,preferred,0x0,1,transform,3"
+	"DP-9,preferred,1080x400,1"
+	"DP-10,preferred,0x0,1,transform,3"
 	"DP-11,preferred,1080x400,1"
 	"DP-12,preferred,0x0,1,transform,3"
       ];
@@ -81,7 +83,7 @@
           "$mod, F, togglefloating,"
 	  "$mod, R, exec, fuzzel"
 	  "$mod, Q, killactive"
-	  "$mod, P, exec, ./scripts/toggle_monitor.sh"
+	  "$mod, P, exec, ~/nixconfig/desktop/scripts/toggle_monitor.sh"
 	  ",XF86MonBrightnessDown, exec, brightnessctl set 5%- "
 	  ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
         ]
