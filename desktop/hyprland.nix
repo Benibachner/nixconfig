@@ -84,6 +84,7 @@
 	  "$mod, R, exec, fuzzel"
 	  "$mod, Q, killactive"
 	  "$mod, P, exec, ~/nixconfig/desktop/scripts/toggle_monitor.sh"
+	  "SUPER, S, exec, hyprshot -m region --clipboard-only"
 	  ",XF86MonBrightnessDown, exec, brightnessctl set 5%- "
 	  ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
         ]
