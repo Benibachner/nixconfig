@@ -14,7 +14,10 @@
   boot.kernelParams = [ "snd-intel-dspcfg.dsp_driver=1" ];
 
   boot = {
-    loader.systemd-boot.enable = lib.mkForce false;
+    loader.systemd-boot = {
+      enable = lib.mkForce false;
+      configurationLimit = 10;
+    };
     initrd.systemd.enable = true;
 
     lanzaboote = {
@@ -116,7 +119,7 @@
   programs.nh = {
     enable = true;
     clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
+    clean.extraArgs = "--keep-since 1w --keep 3";
     flake = "/home/benedikt/nixconfig/";
   };
 
