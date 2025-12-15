@@ -1,18 +1,27 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ inputs, config, pkgs, ... }: {
+{ inputs, pkgs, lib, config, ... }: {
   imports = [
     # Include the results of the hardware scan.
+    inputs.lanzaboote.nixosModules.lanzaboote
     ./hardware-configuration.nix
-    #      inputs.home-manager.nixosModules.default
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.extraModulePackages = with config.boot.kernelPackages; [ yt6801 ];
   boot.kernelParams = [ "snd-intel-dspcfg.dsp_driver=1" ];
+
+  boot = {
+    loader.systemd-boot.enable = lib.mkForce false;
+    initrd.systemd.enable = true;
+
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
+  };
 
   networking.hostName = "snowflake"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -142,7 +151,8 @@
     ripgrep
     jdk
 
-    spotify
+    darktable
+    ardour
 
     gns3-gui
     gns3-server

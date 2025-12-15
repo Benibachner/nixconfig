@@ -16,8 +16,14 @@
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+
     stylix = {
       url = "github:nix-community/stylix/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -26,9 +32,14 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+
+      specialArgs = {
+      inherit inputs;
+      };
     in {
       nixosConfigurations.snowflake = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+	inherit specialArgs;
 
         modules = [ 
           ./system/configuration.nix
@@ -40,7 +51,7 @@
 
       homeConfigurations."benedikt" =
         home-manager.lib.homeManagerConfiguration {
-	  extraSpecialArgs = { inherit inputs; };
+	  extraSpecialArgs = specialArgs;
           inherit pkgs;
 
           modules = [ ./home.nix ./desktop ./terminal nixvim.homeModules.nixvim ];
