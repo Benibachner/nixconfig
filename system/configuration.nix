@@ -58,7 +58,11 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
+  services.greetd = {
+    enable = true;
+  };
+  programs.regreet.enable = true;
+
   services.desktopManager.gnome.enable = true;
   services.displayManager.defaultSession = "hyprland";
 
@@ -153,6 +157,7 @@
     vpnc
     ripgrep
     jdk
+    python3
 
     darktable
     ardour
