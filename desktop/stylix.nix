@@ -21,7 +21,10 @@
 
     fonts = {
       sizes = {
-	terminal = 14;
+	terminal = 13;
+	popups = 14;
+	applications = 14;
+	desktop = 14;
       };
       monospace = {
 	name = "JetBrains Mono Nerd Font";
