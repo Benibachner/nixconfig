@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ inputs, pkgs, lib, config, ... }: {
+{ inputs, pkgs, pkgs-unstable, lib, config, ... }: {
   imports = [
     # Include the results of the hardware scan.
     inputs.lanzaboote.nixosModules.lanzaboote
@@ -158,8 +158,9 @@
     darktable
     ardour
 
-    gns3-gui
-    gns3-server
+    pkgs-unstable.gns3-gui
+    pkgs-unstable.gns3-server
+
     dynamips
     inetutils
     ubridge

@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -28,13 +29,17 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, nixvim, disko, stylix, ... } @inputs:
+  outputs = { nixpkgs, home-manager, nixvim, disko, stylix, nixpkgs-unstable, ... } @inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
 
+      pkgs-unstable = import nixpkgs-unstable {
+	inherit system;
+      };
+
       specialArgs = {
-      inherit inputs;
+      inherit inputs pkgs-unstable;
       };
     in {
       nixosConfigurations.snowflake = nixpkgs.lib.nixosSystem {
