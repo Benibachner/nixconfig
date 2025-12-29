@@ -27,6 +27,7 @@
   };
 
   networking.hostName = "snowflake"; # Define your hostname.
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -59,8 +60,10 @@
 
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
   services.displayManager.defaultSession = "hyprland";
+
+  services.desktopManager.gnome.enable = true;
+
 
   # Configure keymap in X11
   services.xserver.xkb = {
