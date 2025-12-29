@@ -32,6 +32,7 @@
     wl-clipboard
     brightnessctl
     hyprshot
+    gcr
 
     prismlauncher
     obsidian
@@ -46,6 +47,7 @@
   ];
 
   services.polkit-gnome.enable = true;
+  services.gnome-keyring.enable = true;
 
   home.pointerCursor = {
     gtk.enable = true;
