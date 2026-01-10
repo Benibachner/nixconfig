@@ -34,6 +34,7 @@
     hyprshot
     gcr
     pwvucontrol
+    typst
 
     prismlauncher
     obsidian

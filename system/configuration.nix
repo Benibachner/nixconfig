@@ -190,6 +190,7 @@
     pkgs-unstable.gns3-gui
     pkgs-unstable.gns3-server
     screen
+    kdePackages.okular
 
     dynamips
     inetutils

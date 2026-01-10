@@ -37,6 +37,8 @@
 
 	transparent.enable = true;
 
+	typst-preview.enable = true;
+
 	cmp = {
 	  enable = true;
 	  settings = {
