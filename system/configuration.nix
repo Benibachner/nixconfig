@@ -27,6 +27,9 @@
   };
 
   networking.hostName = "snowflake"; # Define your hostname.
+  networking.extraHosts = ''
+    192.168.178.100 nc.theuretzbachner.com
+  '';
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -179,6 +182,7 @@
     ripgrep
     jdk
     python3
+    ansible
 
     darktable
     ardour
