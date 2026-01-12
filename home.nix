@@ -165,6 +165,9 @@
         x = 10;
         y = 10;
       };
+      keyboard.bindings = [
+	 { key = "Return"; mods = "Control|Shift"; action = "SpawnNewInstance"; }
+      ];
     };
   };
 }
