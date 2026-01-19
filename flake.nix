@@ -27,9 +27,14 @@
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    lazyvim = {
+      url = "github:pfassina/lazyvim-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, nixvim, disko, stylix, nixpkgs-unstable, ... } @inputs:
+  outputs = { nixpkgs, home-manager, nixvim, disko, stylix, lazyvim, nixpkgs-unstable, ... } @inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -59,7 +64,7 @@
 	  extraSpecialArgs = specialArgs;
           inherit pkgs;
 
-          modules = [ ./home.nix ./desktop ./terminal nixvim.homeModules.nixvim ];
+          modules = [ ./home.nix ./desktop ./terminal nixvim.homeModules.nixvim lazyvim.homeManagerModules.default ];
         };
     };
 }
