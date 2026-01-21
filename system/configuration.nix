@@ -1,7 +1,15 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ inputs, pkgs, pkgs-unstable, lib, config, ... }: {
+{
+  inputs,
+  pkgs,
+  pkgs-unstable,
+  lib,
+  config,
+  ...
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     inputs.lanzaboote.nixosModules.lanzaboote
@@ -33,7 +41,10 @@
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -66,7 +77,6 @@
   services.displayManager.defaultSession = "hyprland";
 
   services.desktopManager.gnome.enable = true;
-
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -108,13 +118,13 @@
       description = "Apply power saving tweaks";
       wantedBy = [ "multi-user.target" ];
       script = ''
-	echo 1500 > /proc/sys/vm/dirty_writeback_centisecs
-	echo 1 > /sys/module/snd_hda_intel/parameters/power_save
-	echo 0 > /proc/sys/kernel/nmi_watchdog
+        	echo 1500 > /proc/sys/vm/dirty_writeback_centisecs
+        	echo 1 > /sys/module/snd_hda_intel/parameters/power_save
+        	echo 0 > /proc/sys/kernel/nmi_watchdog
 
-	for i in /sys/bus/pci/devices/*; do
-	  echo auto > "$i/power/control"
-	done
+        	for i in /sys/bus/pci/devices/*; do
+        	  echo auto > "$i/power/control"
+        	done
       '';
     };
   };
@@ -125,11 +135,14 @@
   users.users.benedikt = {
     isNormalUser = true;
     description = "Benedikt";
-    extraGroups = [ "networkmanager" "wheel" "ubridge" ];
-    packages = with pkgs;
-      [
-        #  thunderbird
-      ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "ubridge"
+    ];
+    packages = with pkgs; [
+      #  thunderbird
+    ];
   };
 
   #  home-manager = {
@@ -142,7 +155,6 @@
   programs.direnv.enable = true;
 
   programs.hyprland.enable = true;
-
 
   programs.nh = {
     enable = true;
@@ -170,12 +182,15 @@
     #  wget
     home-manager
     comma
+    nixfmt
+
     cargo
     rustc
     gcc
     git
     just
     uv
+    yarn
     cockpit
     neovim
     vpnc
@@ -198,7 +213,6 @@
     ubridge
     vpcs
   ];
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -246,7 +260,7 @@
       runAsRoot = true;
       swtpm.enable = true;
     };
-};
+  };
 
   services = {
     spice-vdagentd.enable = true;
