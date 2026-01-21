@@ -19,6 +19,10 @@
 
     image = ./wallpapers/marveling.jpg;
 
+    targets = {
+	neovim.enable = false;
+    };
+
     fonts = {
       sizes = {
 	terminal = 13;
