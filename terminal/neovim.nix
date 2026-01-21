@@ -10,7 +10,25 @@
         enable = true;
         installDependencies = true;        # Install ruff
         installRuntimeDependencies = true; # Install python3
-      };
+      config = ''
+                  return {
+                    "neovim/nvim-lspconfig",
+                    opts = {
+                      servers = {
+                        pyright = {
+                          settings = {
+                            python = {
+                              analysis = {
+                                typeCheckingMode = "basic",
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  }
+                '';
+            };
       lang.go = {
         enable = true;
         installDependencies = true;        # Install gopls, gofumpt, etc.
