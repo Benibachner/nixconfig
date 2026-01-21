@@ -179,6 +179,7 @@
     cockpit
     neovim
     vpnc
+    wireguard-tools
     ripgrep
     jdk
     python3
