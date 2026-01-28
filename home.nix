@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -103,7 +104,7 @@
   programs.firefox = {
     enable = true;
     profiles = {
-      default = {};
+      default = { };
     };
   };
 
@@ -113,10 +114,13 @@
       user.name = "benedikt";
       user.email = "benedikt.theuretzbachner@gmail.com";
       alias = {
-	s = "status --short";
-	l = "log --oneline --graph";
-	ps = "push";
-	pl = "pull";
+        s = "status --short";
+        l = "log --oneline --graph";
+        ps = "push";
+        pl = "pull";
+        br = "branch";
+        co = "checkout";
+        sw = "switch";
       };
     };
   };
@@ -137,15 +141,17 @@
       nv = "nvim";
       pwr = "powerprofilesctl";
     };
-    shellAbbrs = let
-      expand = cmd: {
-        setCursor = "%";
-        expansion = cmd;
+    shellAbbrs =
+      let
+        expand = cmd: {
+          setCursor = "%";
+          expansion = cmd;
+        };
+      in
+      {
+        gcm = expand ''git commit -m "%"'';
+        nr = expand "nix run nixpkgs#%";
       };
-    in {
-      gcm = expand ''git commit -m "%"'';
-      nr = expand "nix run nixpkgs#%";
-    };
   };
 
   programs.starship = {
@@ -167,7 +173,11 @@
         y = 10;
       };
       keyboard.bindings = [
-	 { key = "Return"; mods = "Control|Shift"; action = "SpawnNewInstance"; }
+        {
+          key = "Return";
+          mods = "Control|Shift";
+          action = "SpawnNewInstance";
+        }
       ];
     };
   };
