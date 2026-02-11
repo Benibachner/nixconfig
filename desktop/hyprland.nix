@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   programs.hyprlock.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
@@ -13,9 +14,9 @@
       input = {
         kb_layout = "at";
 
-	touchpad = {
-	  natural_scroll = true;
-	};
+        touchpad = {
+          natural_scroll = true;
+        };
 
         # focus change on cursor move
         follow_mouse = 1;
@@ -24,20 +25,20 @@
       };
 
       monitor = [
-	",preferred,auto,1.25"
-	"DP-7,preferred,1080x400,1"
-	"DP-8,preferred,0x0,1,transform,3"
-	"DP-9,preferred,1080x400,1"
-	"DP-10,preferred,0x0,1,transform,3"
-	"DP-11,preferred,1080x400,1"
-	"DP-12,preferred,0x0,1,transform,3"
+        ",preferred,auto,1.25"
+        "DP-7,preferred,1080x400,1"
+        "DP-8,preferred,0x0,1,transform,3"
+        "DP-9,preferred,1080x400,1"
+        "DP-10,preferred,0x0,1,transform,3"
+        "DP-11,preferred,1080x400,1"
+        "DP-12,preferred,0x0,1,transform,3"
       ];
 
       exec-once = [
         # finalize startup
         # set cursor for HL itself
         # "hyprctl setcursor Bibata-Modern-Classic 24"
-	"waybar"
+        "waybar"
       ];
 
       general = {
@@ -71,43 +72,52 @@
 
       xwayland.force_zero_scaling = true;
 
+      workspace = [
+        "special:magic, gapsout:60"
+      ];
+
       "$mod" = "ALT";
-      bind =
-        [
-          "SUPER, F, exec, firefox"
-	  "SUPER, RETURN, exec, alacritty"
-          "SUPER, T, exec, alacritty"
-          "SUPER, E, exec, nautilus"
-	  "SUPER, l, exec, hyprlock"
-          "$mod, M, exec, pkill Hyprland"
-          "$mod, F, togglefloating,"
-	  "$mod, R, exec, fuzzel"
-	  "$mod, Q, killactive"
-	  "$mod, P, exec, ~/nixconfig/desktop/scripts/toggle_monitor.sh"
-	  "SUPER, S, exec, hyprshot -m region --clipboard-only"
-	  ",XF86MonBrightnessDown, exec, brightnessctl set 5%- "
-	  ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-        ]
-        ++ (
-          # workspaces
-          # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-          builtins.concatLists (builtins.genList (
-              i: let
-                ws = i + 1;
-              in [
-                "$mod, code:1${toString i}, workspace, ${toString ws}"
-                "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-              ]
-            )
-            9)
-        );
+      bind = [
+        "SUPER, F, exec, firefox"
+        "SUPER, RETURN, exec, alacritty"
+        "SUPER, T, exec, alacritty"
+        "SUPER, E, exec, nautilus"
+        "SUPER, l, exec, hyprlock"
+        "$mod, M, exec, pkill Hyprland"
+        "$mod, F, togglefloating,"
+        "$mod, R, exec, fuzzel"
+        "$mod, Q, killactive"
+        "$mod, P, exec, ~/nixconfig/desktop/scripts/toggle_monitor.sh"
+        "SUPER, S, exec, hyprshot -m region --clipboard-only"
+        ",XF86MonBrightnessDown, exec, brightnessctl set 5%- "
+        ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+
+        "$mod, W, togglespecialworkspace, magic"
+        "$mod SHIFT, W, movetoworkspace, special:magic"
+      ]
+      ++ (
+        # workspaces
+        # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+        builtins.concatLists (
+          builtins.genList (
+            i:
+            let
+              ws = i + 1;
+            in
+            [
+              "$mod, code:1${toString i}, workspace, ${toString ws}"
+              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            ]
+          ) 9
+        )
+      );
       binde = [
-	  ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-	  ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+        ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
       ];
       bindm = [
-	"$mod, mouse:272, movewindow"
-	"$mod, mouse:273, resizewindow"
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
       ];
     };
   };
