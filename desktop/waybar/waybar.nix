@@ -69,7 +69,7 @@
         "hyprland/window" = {
           max-length = 50;
           format = "{title}";
-          icon = true;
+          icon = false;
         };
 
         systemd-failed-units =
@@ -148,8 +148,8 @@
 
         battery = {
           format = "{icon} {capacity}%";
-          format-discharging = "{icon}";
-          format-charging = "{icon}";
+          format-discharging = "{icon} {capacity}%";
+          format-charging = "{icon} {capacity}%";
           format-plugged = "";
           format-icons = {
             charging = [
