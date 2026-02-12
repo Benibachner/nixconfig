@@ -2,11 +2,12 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
-      inputs.stylix.homeModules.stylix
+    inputs.stylix.homeModules.stylix
   ];
-  
+
   stylix = {
     enable = true;
 
@@ -15,22 +16,22 @@
 
     opacity.terminal = 0.7;
 
-    targets.firefox.profileNames = ["default"];
+    targets.firefox.profileNames = [ "default" ];
 
     image = ./wallpapers/marveling.jpg;
 
     targets = {
-	neovim.enable = false;
+      neovim.enable = false;
     };
 
     fonts = {
       sizes = {
-	terminal = 13;
-	popups = 14;
+        terminal = 13;
+        popups = 14;
       };
       monospace = {
-	name = "JetBrains Mono Nerd Font";
-	package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrains Mono Nerd Font";
+        package = pkgs.nerd-fonts.jetbrains-mono;
       };
     };
   };
