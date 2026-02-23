@@ -27,7 +27,8 @@
         modules-right = [
           "backlight"
           "wireplumber"
-          "group/power"
+          "power-profiles-daemon"
+          "battery"
           "tray"
         ];
 
@@ -199,7 +200,7 @@
         };
 
         power-profiles-daemon = {
-          format = "{icon}";
+          format = "{icon} ";
           tooltip-format = "Power profile: {profile}\nDriver: {driver}";
           tooltip = true;
           format-icons = {
