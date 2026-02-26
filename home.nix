@@ -53,6 +53,9 @@
     # '')
   ];
 
+  xdg.configFile."JetBrains/IntelliJIdea${pkgs.jetbrains.idea.version}/idea64.vmoptions".text =
+    "-Dawt.toolkit.name=WLToolkit";
+
   services.polkit-gnome.enable = true;
   services.gnome-keyring.enable = true;
 
