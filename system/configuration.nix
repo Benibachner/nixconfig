@@ -118,6 +118,8 @@
 
   services.cockpit.enable = false;
 
+  services.tailscale.enable = true;
+
   systemd = {
     services.powersave = {
       enable = true;
