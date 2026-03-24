@@ -73,13 +73,13 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = false;
+  services.displayManager.gdm.enable = true;
   # services.displayManager.defaultSession = "hyprland";
   #
-  services.greetd = {
-    enable = true;
-  };
-  programs.regreet.enable = true;
+  #services.greetd = {
+  #  enable = true;
+  #};
+  #programs.regreet.enable = true;
 
 
   services.desktopManager.gnome.enable = true;
