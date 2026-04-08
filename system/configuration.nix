@@ -120,6 +120,8 @@
 
   services.tailscale.enable = true;
 
+  services.openssh.enable = true;
+
   systemd = {
     services.powersave = {
       enable = true;
@@ -175,6 +177,9 @@
     flake = "/home/benedikt/nixconfig/";
   };
 
+  programs.neovim.enable = true;
+  programs.neovim.defaultEditor = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -204,11 +209,11 @@
     uv
     yarn
     cockpit
-    neovim
     vpnc
     wireguard-tools
     ripgrep
     jdk
+    glib
     python3
     ansible
 

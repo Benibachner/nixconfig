@@ -145,6 +145,7 @@
     '';
     shellAliases = {
       nv = "nvim";
+      vi = "nvim";
       pwr = "powerprofilesctl";
     };
     shellAbbrs =
