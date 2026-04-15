@@ -37,6 +37,9 @@
     pwvucontrol
     typst
     terraform
+    rustfmt
+    codex
+    nmap
 
     prismlauncher
     obsidian
