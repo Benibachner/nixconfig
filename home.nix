@@ -41,6 +41,7 @@
     codex
     nmap
 
+    chromium
     prismlauncher
     obsidian
     rawtherapee
