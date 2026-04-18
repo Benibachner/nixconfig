@@ -40,11 +40,11 @@
     rustfmt
     codex
     nmap
+    opencode
 
     chromium
     prismlauncher
     obsidian
-    rawtherapee
     libreoffice
     networkmanagerapplet
     jetbrains.idea
