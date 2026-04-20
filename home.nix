@@ -40,6 +40,7 @@
     rustfmt
     codex
     nmap
+    btop
     opencode
 
     chromium
