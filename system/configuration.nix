@@ -81,7 +81,6 @@
   #};
   #programs.regreet.enable = true;
 
-
   services.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
