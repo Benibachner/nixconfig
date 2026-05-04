@@ -19,7 +19,7 @@
   # Bootloader.
   boot.loader.efi.canTouchEfiVariables = true;
   boot.extraModulePackages = with config.boot.kernelPackages; [ yt6801 ];
-  boot.kernelParams = [ "snd-intel-dspcfg.dsp_driver=1" ];
+  boot.kernelParams = [ ];
 
   boot = {
     loader.systemd-boot = {
@@ -231,8 +231,8 @@
     podman-compose
     podman-tui
 
-    pkgs-unstable.gns3-gui
-    pkgs-unstable.gns3-server
+    gns3-gui
+    gns3-server
     screen
     kdePackages.okular
 
