@@ -32,39 +32,62 @@
       url = "github:pfassina/lazyvim-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-index-database = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, nixvim, disko, stylix, lazyvim, nixpkgs-unstable, ... } @inputs:
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      nixvim,
+      disko,
+      stylix,
+      lazyvim,
+      nixpkgs-unstable,
+      nix-index-database,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
 
       pkgs-unstable = import nixpkgs-unstable {
-	inherit system;
+        inherit system;
       };
 
       specialArgs = {
-      inherit inputs pkgs-unstable;
+        inherit inputs pkgs-unstable;
       };
-    in {
+    in
+    {
       nixosConfigurations.snowflake = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-	inherit specialArgs;
+        inherit specialArgs;
 
-        modules = [ 
+        modules = [
           ./system/configuration.nix
-
           disko.nixosModules.disko
           ./system/disko.nix
+          nix-index-database.nixosModules.nix-index
         ];
       };
 
-      homeConfigurations."benedikt" =
-        home-manager.lib.homeManagerConfiguration {
-	  extraSpecialArgs = specialArgs;
-          inherit pkgs;
+      homeConfigurations."benedikt" = home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = specialArgs;
+        inherit pkgs;
 
-          modules = [ ./home.nix ./desktop ./terminal nixvim.homeModules.nixvim lazyvim.homeManagerModules.default ];
-        };
+        modules = [
+          ./home.nix
+          ./desktop
+          ./terminal
+          nix-index-database.homeModules.nix-index
+          nixvim.homeModules.nixvim
+          lazyvim.homeManagerModules.default
+        ];
+      };
     };
 }

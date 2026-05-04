@@ -51,6 +51,8 @@
     jetbrains.idea
     jetbrains.pycharm
 
+    nil
+
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
@@ -110,6 +112,8 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.nix-index.enable = true;
 
   # Install firefox.
   programs.firefox = {
