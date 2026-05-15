@@ -50,6 +50,7 @@
     networkmanagerapplet
     jetbrains.idea
     jetbrains.pycharm
+    blueman
 
     nil
 
