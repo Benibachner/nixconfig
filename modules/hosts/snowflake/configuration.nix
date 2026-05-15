@@ -29,6 +29,8 @@
       boot.kernelParams = [ ];
       boot.kernelPackages = pkgs.linuxPackages_latest;
 
+      hardware.tuxedo-drivers.enable = true;
+
       boot = {
         loader.systemd-boot = {
           enable = lib.mkForce false;
