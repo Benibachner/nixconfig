@@ -20,6 +20,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.extraModulePackages = with config.boot.kernelPackages; [ yt6801 ];
   boot.kernelParams = [ ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot = {
     loader.systemd-boot = {
