@@ -5,6 +5,20 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    import-tree = {
+      url = "github:vic/import-tree";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    wrapper-modules = {
+      url = "github:BirdeeHub/nix-wrapper-modules";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,56 +52,5 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  outputs =
-    {
-      nixpkgs,
-      home-manager,
-      nixvim,
-      disko,
-      stylix,
-      lazyvim,
-      nixpkgs-unstable,
-      nix-index-database,
-      ...
-    }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-
-      pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
-      };
-
-      specialArgs = {
-        inherit inputs pkgs-unstable;
-      };
-    in
-    {
-      nixosConfigurations.snowflake = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        inherit specialArgs;
-
-        modules = [
-          ./system/configuration.nix
-          disko.nixosModules.disko
-          ./system/disko.nix
-          nix-index-database.nixosModules.nix-index
-        ];
-      };
-
-      homeConfigurations."benedikt" = home-manager.lib.homeManagerConfiguration {
-        extraSpecialArgs = specialArgs;
-        inherit pkgs;
-
-        modules = [
-          ./home.nix
-          ./desktop
-          ./terminal
-          nix-index-database.homeModules.nix-index
-          nixvim.homeModules.nixvim
-          lazyvim.homeManagerModules.default
-        ];
-      };
-    };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }

@@ -1,0 +1,38 @@
+{ self, inputs, ... }:
+{
+  flake.homeModules.stylix =
+    { pkgs, lib, ... }:
+    {
+      imports = [
+        inputs.stylix.homeModules.stylix
+      ];
+
+      stylix = {
+        enable = true;
+
+        polarity = "dark";
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/atlas.yaml";
+
+        opacity.terminal = 0.7;
+
+        targets.firefox.profileNames = [ "default" ];
+
+        image = ./wallpapers/marveling.jpg;
+
+        targets = {
+          neovim.enable = false;
+        };
+
+        fonts = {
+          sizes = {
+            terminal = 13;
+            popups = 14;
+          };
+          monospace = {
+            name = "JetBrains Mono Nerd Font";
+            package = pkgs.nerd-fonts.jetbrains-mono;
+          };
+        };
+      };
+    };
+}
