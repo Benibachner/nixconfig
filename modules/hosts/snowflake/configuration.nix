@@ -129,7 +129,6 @@
         extraGroups = [
           "networkmanager"
           "wheel"
-          "ubridge"
         ];
       };
 
@@ -148,15 +147,6 @@
       # Allow unfree packages
       nixpkgs.config.allowUnfree = true;
 
-      users.groups.ubridge = { };
-
-      security.wrappers.ubridge = {
-        source = "/run/current-system/sw/bin/ubridge";
-        capabilities = "cap_net_admin,cap_net_raw=ep";
-        owner = "root";
-        group = "ubridge";
-        permissions = "u+rx,g+rx,o+rx";
-      };
       # List packages installed in system profile. To search, run:
       # $ nix search wget
       environment.systemPackages = with pkgs; [
@@ -172,7 +162,6 @@
         git
         just
         uv
-        yarn
         cockpit
         vpnc
         wireguard-tools
@@ -180,20 +169,8 @@
         jdk
         glib
         python3
-        ansible
 
         podman-compose
-        podman-tui
-
-        gns3-gui
-        gns3-server
-        screen
-        kdePackages.okular
-
-        dynamips
-        inetutils
-        ubridge
-        vpcs
       ];
 
       # This value determines the NixOS release from which the default
