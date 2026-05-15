@@ -23,6 +23,7 @@
 
       nixpkgs.config.allowUnfreePredicate = _: true;
       home.packages = with pkgs; [
+        nil
         nerd-fonts.jetbrains-mono
         fastfetch
         bibata-cursors
@@ -47,8 +48,6 @@
         jetbrains.idea
         jetbrains.pycharm
         blueman
-
-        nil
       ];
 
       xdg.configFile."JetBrains/IntelliJIdea${pkgs.jetbrains.idea.version}/idea64.vmoptions".text =
