@@ -13,6 +13,8 @@
         self.homeModules.stylix
         self.homeModules.starship
         self.homeModules.fuzzel
+
+        inputs.nix-index-database.homeModules.nix-index
       ];
 
       programs.neovim.enable = true;

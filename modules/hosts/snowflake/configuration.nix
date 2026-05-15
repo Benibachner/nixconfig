@@ -13,6 +13,7 @@
         self.nixosModules.snowflakeDisko
         self.nixosModules.snowflakeHardware
         inputs.lanzaboote.nixosModules.lanzaboote
+        inputs.nix-index-database.nixosModules.nix-index
       ];
 
       nix.settings.experimental-features = [
