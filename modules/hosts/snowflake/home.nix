@@ -47,7 +47,6 @@
         networkmanagerapplet
         jetbrains.idea
         jetbrains.pycharm
-        blueman
       ];
 
       xdg.configFile."JetBrains/IntelliJIdea${pkgs.jetbrains.idea.version}/idea64.vmoptions".text =
