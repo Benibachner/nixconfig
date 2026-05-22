@@ -39,6 +39,7 @@
         nmap
         btop
         opencode
+        fzf
 
         chromium
         prismlauncher
