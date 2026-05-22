@@ -74,6 +74,10 @@
             "special:magic, gapsout:60"
           ];
 
+          gesture = [
+            "3, horizontal, workspace"
+          ];
+
           "$mod" = "ALT";
           bind = [
             "SUPER, F, exec, firefox"
