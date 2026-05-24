@@ -12,6 +12,7 @@
         inputs.disko.nixosModules.disko
         self.nixosModules.snowflakeDisko
         self.nixosModules.snowflakeHardware
+        self.nixosModules.powersave
         inputs.lanzaboote.nixosModules.lanzaboote
         inputs.nix-index-database.nixosModules.nix-index
       ];
@@ -70,9 +71,25 @@
 
       # Enable the GNOME Desktop Environment.
       # services.displayManager.gdm.enable = true;
-      services.displayManager.sddm = {
+      # services.displayManager.sddm = {
+      #   enable = true;
+      #   wayland.enable = true;
+      # };
+
+      services.greetd = {
         enable = true;
-        wayland.enable = true;
+      };
+      programs.regreet = {
+        enable = true;
+
+        theme.name = "Adwaita-dark";
+
+        settings = {
+          background = {
+            path = "/home/benedikt/nixconfig/modules/features/stylix/wallpapers/switzerland-snowfall.jpg"; # Pfad zu deinem Wallpaper
+            fit = "Cover"; # Optionen: "Contain", "Cover", "Fill", "ScaleDown"
+          };
+        };
       };
       services.displayManager.defaultSession = "hyprland";
       #
