@@ -46,15 +46,11 @@
         obsidian
         libreoffice
         networkmanagerapplet
-        jetbrains.idea
-        jetbrains.pycharm
+        kdePackages.kdenlive
       ];
 
-      xdg.configFile."JetBrains/IntelliJIdea${pkgs.jetbrains.idea.version}/idea64.vmoptions".text =
-        "-Dawt.toolkit.name=WLToolkit";
-
       services.polkit-gnome.enable = true;
-      services.gnome-keyring.enable = true;
+      # services.gnome-keyring.enable = true;
 
       home.pointerCursor = {
         gtk.enable = true;
