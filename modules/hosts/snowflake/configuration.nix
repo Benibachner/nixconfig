@@ -10,11 +10,14 @@
     {
       imports = [
         inputs.disko.nixosModules.disko
+        inputs.lanzaboote.nixosModules.lanzaboote
+        inputs.nix-index-database.nixosModules.nix-index
+
         self.nixosModules.snowflakeDisko
         self.nixosModules.snowflakeHardware
         self.nixosModules.powersave
-        inputs.lanzaboote.nixosModules.lanzaboote
-        inputs.nix-index-database.nixosModules.nix-index
+        self.nixosModules.powersave
+        self.nixosModules.kde-connect
       ];
 
       nix.settings.experimental-features = [
