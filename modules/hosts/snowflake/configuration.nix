@@ -70,37 +70,6 @@
       # Enable the X11 windowing system.
       services.xserver.enable = true;
 
-      # Enable the GNOME Desktop Environment.
-      # services.displayManager.gdm.enable = true;
-      # services.displayManager.sddm = {
-      #   enable = true;
-      #   wayland.enable = true;
-      # };
-
-      services.greetd = {
-        enable = true;
-      };
-      programs.regreet = {
-        enable = true;
-
-        theme.name = "Adwaita-dark";
-
-        settings = {
-          background = {
-            path = "/home/benedikt/nixconfig/modules/features/stylix/wallpapers/switzerland-snowfall.jpg"; # Pfad zu deinem Wallpaper
-            fit = "Cover"; # Optionen: "Contain", "Cover", "Fill", "ScaleDown"
-          };
-        };
-      };
-      services.displayManager.defaultSession = "hyprland";
-      #
-      #services.greetd = {
-      #  enable = true;
-      #};
-      #programs.regreet.enable = true;
-
-      services.desktopManager.gnome.enable = true;
-
       # Configure keymap in X11
       services.xserver.xkb = {
         layout = "at";
