@@ -17,7 +17,7 @@
         inputs.nix-index-database.homeModules.nix-index
       ];
 
-      programs.neovim.enable = true;
+      # programs.neovim.enable = true;
 
       home.stateVersion = "25.05";
 
