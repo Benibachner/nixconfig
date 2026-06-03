@@ -26,7 +26,7 @@
 
         # opacity.terminal = 0.7;
 
-        targets.firefox.profileNames = [ "default" ];
+        # targets.firefox.profileNames = [ "default" ];
 
         image = ./wallpapers/switzerland-snowfall.jpg;
 
