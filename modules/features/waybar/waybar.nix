@@ -188,15 +188,6 @@
               };
             };
 
-            idle_inhibitor = {
-              format = "{icon}";
-
-              format-icons = {
-                activated = "";
-                deactivated = "";
-              };
-            };
-
             power-profiles-daemon = {
               format = "{icon} ";
               tooltip-format = "Power profile: {profile}\nDriver: {driver}";
@@ -207,27 +198,6 @@
                 balanced = "";
                 power-saver = "";
               };
-            };
-
-            disk = {
-              format = "󰋊 {percentage_free}%";
-            };
-
-            cpu = {
-              format = " {usage}%";
-              interval = 5;
-            };
-
-            temperature = {
-              format = " {temperatureC}°C";
-              interval = 5;
-              critical-format = "󰸁 {temperatureC}°C";
-              critical-threshold = 90;
-            };
-
-            memory = {
-              format = " {used}/{total}GiB";
-              interval = 5;
             };
 
             tray = {
