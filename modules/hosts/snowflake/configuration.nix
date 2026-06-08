@@ -15,6 +15,7 @@
 
         self.nixosModules.snowflakeDisko
         self.nixosModules.snowflakeHardware
+        self.nixosModules.display-manager
         self.nixosModules.powersave
         self.nixosModules.powersave
         self.nixosModules.kde-connect
