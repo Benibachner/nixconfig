@@ -17,7 +17,6 @@
         self.nixosModules.snowflakeHardware
         self.nixosModules.display-manager
         self.nixosModules.powersave
-        self.nixosModules.powersave
         self.nixosModules.kde-connect
       ];
 
@@ -33,6 +32,8 @@
       boot.extraModulePackages = with config.boot.kernelPackages; [ yt6801 ];
       boot.kernelParams = [ ];
       boot.kernelPackages = pkgs.linuxPackages_latest;
+
+      hardware.tuxedo-drivers.enable = true;
 
       boot = {
         loader.systemd-boot = {

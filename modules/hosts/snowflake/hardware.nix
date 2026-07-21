@@ -23,7 +23,14 @@
         "sdhci_pci"
       ];
       boot.initrd.kernelModules = [ "amdgpu" ];
-      boot.kernelModules = [ "kvm-amd" ];
+      boot.kernelModules = [
+        "kvm-amd"
+        "snd_hda_intel"
+        "tuxedo_io"
+      ];
+      boot.extraModprobeConfig = ''
+        options snd_hda_intel power_save=0 power_save_controller=N
+      '';
       boot.extraModulePackages = [ ];
 
       # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
