@@ -28,7 +28,7 @@
 
         # targets.firefox.profileNames = [ "default" ];
 
-        image = ./wallpapers/switzerland-snowfall.jpg;
+        image = ./wallpapers/winter-hut.jpg;
 
         targets = {
           # neovim.enable = false;
