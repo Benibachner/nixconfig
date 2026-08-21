@@ -47,6 +47,7 @@
         libreoffice
         networkmanagerapplet
         kdePackages.kdenlive
+        noctalia-shell
       ];
 
       services.polkit-gnome.enable = true;

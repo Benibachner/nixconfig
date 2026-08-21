@@ -18,6 +18,7 @@
         self.nixosModules.display-manager
         self.nixosModules.powersave
         self.nixosModules.kde-connect
+        self.nixosModules.niri
       ];
 
       nix.settings.experimental-features = [
@@ -34,6 +35,7 @@
       boot.kernelPackages = pkgs.linuxPackages_latest;
 
       hardware.tuxedo-drivers.enable = true;
+      # hardware.tuxedo-rs.enable = true;
 
       boot = {
         loader.systemd-boot = {
