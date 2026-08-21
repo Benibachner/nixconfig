@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ inputs, ... }:
 {
   flake.homeModules.stylix =
     {
@@ -17,12 +17,12 @@
 
         polarity = "dark";
 
-        # base16Scheme = "${pkgs.base16-schemes}/share/themes/atlas.yaml";
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-dark.yaml";
 
-        override = {
-          base08 = "d17b2e";
-          base0B = "8C9288";
-        };
+        # override = {
+        #   base08 = "d17b2e";
+        #   base0B = "8C9288";
+        # };
 
         # opacity.terminal = 0.7;
 
@@ -31,7 +31,8 @@
         image = ./wallpapers/switzerland-snowfall.jpg;
 
         targets = {
-          neovim.enable = false;
+          # neovim.enable = false;
+          firefox.enable = false;
         };
 
         fonts = {
