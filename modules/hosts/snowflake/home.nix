@@ -13,6 +13,7 @@
         self.homeModules.stylix
         self.homeModules.starship
         self.homeModules.fuzzel
+        self.homeModules.unstable
 
         inputs.nix-index-database.homeModules.nix-index
       ];
@@ -35,11 +36,10 @@
         typst
         terraform
         rustfmt
-        codex
         nmap
         btop
-        opencode
         fzf
+        unstable.antigravity-cli
 
         chromium
         prismlauncher

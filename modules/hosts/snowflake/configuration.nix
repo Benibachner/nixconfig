@@ -19,6 +19,7 @@
         self.nixosModules.powersave
         self.nixosModules.kde-connect
         self.nixosModules.niri
+        self.nixosModules.unstable
       ];
 
       nix.settings.experimental-features = [
