@@ -19,6 +19,7 @@
         self.nixosModules.powersave
         self.nixosModules.kde-connect
         self.nixosModules.niri
+        self.nixosModules.noctalia-greeter
         self.nixosModules.unstable
       ];
 
@@ -101,28 +102,11 @@
         alsa.enable = true;
         alsa.support32Bit = true;
         pulse.enable = true;
-        # If you want to use JACK applications, uncomment this
-        #jack.enable = true;
-
-        # use the example session manager (no others are packaged yet so this is enabled by default,
-        # no need to redefine it in your config for now)
-        #media-session.enable = true;
       };
 
       services.tailscale.enable = false;
 
       services.openssh.enable = false;
-
-      services.ollama = {
-        enable = true;
-        package = pkgs.ollama-rocm;
-        loadModels = [ "gemma4:26b-a4b-it-q4_K_M" ];
-        environmentVariables = {
-          HCC_AMDGPU_TARGET = "gfx1103"; # used to be necessary, but doesn't seem to anymore
-        };
-        rocmOverrideGfx = "11.0.0";
-        # environmentVariables.OLLAMA_CONTEXT_LENGTH = "32768";
-      };
 
       users.users.benedikt = {
         isNormalUser = true;
