@@ -19,7 +19,7 @@
       #  };
       #};
 
-      services.displayManager.gdm.enable = true;
+      services.displayManager.gdm.enable = false;
       services.displayManager.defaultSession = "hyprland";
       #
       #services.greetd = {

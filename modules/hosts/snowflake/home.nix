@@ -13,6 +13,8 @@
         self.homeModules.stylix
         self.homeModules.starship
         self.homeModules.fuzzel
+        self.homeModules.niri
+        self.homeModules.noctalia-shell
         self.homeModules.unstable
 
         inputs.nix-index-database.homeModules.nix-index
@@ -47,7 +49,6 @@
         libreoffice
         networkmanagerapplet
         kdePackages.kdenlive
-        noctalia-shell
       ];
 
       services.polkit-gnome.enable = true;
