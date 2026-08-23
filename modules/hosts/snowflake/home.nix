@@ -6,8 +6,8 @@
       imports = [
         self.homeModules.git
         self.homeModules.fish
-        self.homeModules.hyprland
-        self.homeModules.waybar
+        # self.homeModules.hyprland
+        # self.homeModules.waybar
         self.homeModules.firefox
         self.homeModules.alacritty
         self.homeModules.stylix
