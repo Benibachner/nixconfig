@@ -18,6 +18,7 @@
         self.nixosModules.display-manager
         self.nixosModules.powersave
         self.nixosModules.kde-connect
+        self.nixosModules.ollama
         self.nixosModules.niri
         self.nixosModules.noctalia-greeter
         self.nixosModules.unstable
@@ -32,7 +33,7 @@
 
       # Bootloader.
       boot.loader.efi.canTouchEfiVariables = true;
-      boot.extraModulePackages = with config.boot.kernelPackages; [ yt6801 ];
+      # boot.extraModulePackages = with config.boot.kernelPackages; [ yt6801 ];
       boot.kernelParams = [ ];
       boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -56,6 +57,7 @@
       networking.extraHosts = ''
         192.168.178.100 nc.theuretzbachner.com
       '';
+      networking.networkmanager.wifi.powersave = false;
 
       time.timeZone = "Europe/Vienna";
 

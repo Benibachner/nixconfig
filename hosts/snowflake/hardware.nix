@@ -29,8 +29,10 @@
         "tuxedo_io"
       ];
       boot.extraModprobeConfig = ''
-        options snd_hda_intel power_save=0 power_save_controller=N
+        options iwlwifi disable_11ax=1
       '';
+      # options snd_hda_intel power_save=0 power_save_controller=N
+
       boot.extraModulePackages = [ ];
 
       # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
