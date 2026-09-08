@@ -157,6 +157,8 @@
         glib
         python3
         podman-compose
+        opencode
+        aider-chat
       ];
 
       # This value determines the NixOS release from which the default
