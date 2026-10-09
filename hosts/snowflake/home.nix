@@ -15,7 +15,6 @@
         self.homeModules.fuzzel
         self.homeModules.niri
         self.homeModules.noctalia-shell
-        self.homeModules.mistral-vibe
         self.homeModules.unstable
 
         inputs.nix-index-database.homeModules.nix-index
